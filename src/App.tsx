@@ -6,6 +6,7 @@ import NavigationComponent from './components/Navigation';
 import AIImpactScore from './pages/AIImpactScore';
 import AIInterviewAssignments from './pages/AIInterviewAssignments';
 import AIInterviewAnalysis from './pages/AIInterviewAnalysis';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -33,7 +34,9 @@ const App: React.FC = () => {
   return (
     <AppProvider i18n={{}}>
       <Router>
-        <AppContent />
+        <ProtectedRoute>
+          <AppContent />
+        </ProtectedRoute>
       </Router>
     </AppProvider>
   );
