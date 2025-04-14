@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigation as PolarisNavigation } from '@shopify/polaris';
-import { HomeMinor, ListMinor, AnalyticsMinor, LogOutMinor } from '@shopify/polaris-icons';
+import { HomeMinor, ListMinor, AnalyticsMinor } from '@shopify/polaris-icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 interface NavigationProps {
@@ -15,11 +15,6 @@ const Navigation: React.FC<NavigationProps> = ({ selected, onSelect }) => {
   const handleNavigation = (path: string, key: string) => {
     navigate(path);
     onSelect(key);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('isAuthenticated');
-    window.location.reload();
   };
 
   return (
@@ -43,15 +38,6 @@ const Navigation: React.FC<NavigationProps> = ({ selected, onSelect }) => {
             icon: AnalyticsMinor,
             selected: location.pathname === '/interview-analysis',
             onClick: () => handleNavigation('/interview-analysis', 'analysis'),
-          },
-        ]}
-      />
-      <PolarisNavigation.Section
-        items={[
-          {
-            label: 'Logout',
-            icon: LogOutMinor,
-            onClick: handleLogout,
           },
         ]}
       />
