@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigation as PolarisNavigation } from '@shopify/polaris';
-import { HomeMinor, ListMinor, AnalyticsMinor } from '@shopify/polaris-icons';
+import { HomeMinor, ListMinor, AnalyticsMinor, LogOutMinor } from '@shopify/polaris-icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 interface NavigationProps {
@@ -8,13 +8,18 @@ interface NavigationProps {
   onSelect: (selected: string) => void;
 }
 
-const NavigationComponent: React.FC<NavigationProps> = ({ selected, onSelect }) => {
-  const location = useLocation();
+const Navigation: React.FC<NavigationProps> = ({ selected, onSelect }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleNavigation = (path: string, selected: string) => {
+  const handleNavigation = (path: string, key: string) => {
     navigate(path);
-    onSelect(selected);
+    onSelect(key);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    window.location.reload();
   };
 
   return (
@@ -41,8 +46,17 @@ const NavigationComponent: React.FC<NavigationProps> = ({ selected, onSelect }) 
           },
         ]}
       />
+      <PolarisNavigation.Section
+        items={[
+          {
+            label: 'Logout',
+            icon: LogOutMinor,
+            onClick: handleLogout,
+          },
+        ]}
+      />
     </PolarisNavigation>
   );
 };
 
-export default NavigationComponent; 
+export default Navigation; 

@@ -6,21 +6,25 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const auth = localStorage.getItem('isAuthenticated');
-    setIsAuthenticated(auth === 'true');
-    setIsLoading(false);
+    const checkAuth = () => {
+      const auth = localStorage.getItem('isAuthenticated');
+      setIsAuthenticated(auth === 'true');
+    };
+
+    checkAuth();
+    window.addEventListener('storage', checkAuth);
+    return () => window.removeEventListener('storage', checkAuth);
   }, []);
 
   const handleLogin = (success: boolean) => {
     setIsAuthenticated(success);
   };
 
-  if (isLoading) {
-    return null;
+  if (isAuthenticated === null) {
+    return null; // Initial loading state
   }
 
   if (!isAuthenticated) {

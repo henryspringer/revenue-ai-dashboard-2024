@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, KeyboardEvent } from 'react';
 import {
   Page,
   Card,
@@ -30,30 +30,43 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     }
   };
 
+  const handleKeyPress = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   return (
     <Page>
-      <Box paddingTop="16">
+      <Box padding="16">
         <Card>
           <BlockStack gap="4">
-            <Text as="h2" variant="headingLg">
-              Shopify Revenue AI Analysis Dashboard
-            </Text>
-            <Text as="p" variant="bodyMd">
-              Please enter the password to access this dashboard.
-            </Text>
-            <FormLayout>
-              <TextField
-                type="password"
-                value={password}
-                onChange={setPassword}
-                error={error}
-                autoComplete="off"
-                label="Password"
-              />
-              <Button primary onClick={handleSubmit}>
-                Login
-              </Button>
-            </FormLayout>
+            <Box padding="4">
+              <Text as="h2" variant="headingLg">
+                Shopify Revenue AI Analysis Dashboard
+              </Text>
+              <Box paddingTop="4">
+                <Text as="p" variant="bodyMd">
+                  Please enter the password to access this dashboard.
+                </Text>
+              </Box>
+              <Box paddingTop="4">
+                <FormLayout>
+                  <TextField
+                    type="password"
+                    value={password}
+                    onChange={setPassword}
+                    error={error}
+                    autoComplete="off"
+                    label="Password"
+                    onKeyPress={handleKeyPress}
+                  />
+                  <Button primary onClick={handleSubmit}>
+                    Login
+                  </Button>
+                </FormLayout>
+              </Box>
+            </Box>
           </BlockStack>
         </Card>
       </Box>
