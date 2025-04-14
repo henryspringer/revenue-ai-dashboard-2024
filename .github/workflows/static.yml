@@ -39,7 +39,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run build
@@ -52,7 +52,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload the build directory
           path: './build'
 
       - name: Deploy to GitHub Pages
