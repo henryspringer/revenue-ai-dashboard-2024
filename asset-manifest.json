@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/revenue-ai-dashboard-2024/static/css/main.abd9ebe3.css",
+    "main.js": "/revenue-ai-dashboard-2024/static/js/main.ec7ea33f.js",
+    "static/js/453.09b60c25.chunk.js": "/revenue-ai-dashboard-2024/static/js/453.09b60c25.chunk.js",
+    "index.html": "/revenue-ai-dashboard-2024/index.html",
+    "main.abd9ebe3.css.map": "/revenue-ai-dashboard-2024/static/css/main.abd9ebe3.css.map",
+    "main.ec7ea33f.js.map": "/revenue-ai-dashboard-2024/static/js/main.ec7ea33f.js.map",
+    "453.09b60c25.chunk.js.map": "/revenue-ai-dashboard-2024/static/js/453.09b60c25.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.abd9ebe3.css",
+    "static/js/main.ec7ea33f.js"
+  ]
+}
