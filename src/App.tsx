@@ -32,7 +32,7 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <AppProvider i18n={{}}>
-      <Router>
+      <Router basename="/revenue-ai-dashboard-2024">
         <AppContent />
       </Router>
     </AppProvider>
