@@ -21,7 +21,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const handleSubmit = () => {
     // This is a simple example - in a real app, you'd want to use environment variables
     // and proper encryption for the password
-    if (password === 'ShopifyRevenue2024') {
+    if (password === 'shopify') {
       localStorage.setItem('isAuthenticated', 'true');
       onLogin(true);
     } else {
