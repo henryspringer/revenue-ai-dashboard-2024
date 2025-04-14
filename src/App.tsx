@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppProvider, Frame } from '@shopify/polaris';
 import '@shopify/polaris/build/esm/styles.css';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import NavigationComponent from './components/Navigation';
 import AIImpactScore from './pages/AIImpactScore';
 import AIInterviewAssignments from './pages/AIInterviewAssignments';
@@ -32,7 +32,7 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <AppProvider i18n={{}}>
-      <Router basename="/revenue-ai-dashboard-2024">
+      <Router>
         <AppContent />
       </Router>
     </AppProvider>
