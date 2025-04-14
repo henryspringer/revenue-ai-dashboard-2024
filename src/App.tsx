@@ -27,9 +27,9 @@ const PasswordPrompt: React.FC<{ onCorrectPassword: () => void }> = ({ onCorrect
 
   return (
     <Page>
-      <Box padding="16">
+      <Box padding="8">
         <Card>
-          <Box padding="4">
+          <Box padding="5">
             <Text as="h2" variant="headingLg">
               Shopify Revenue AI Analysis Dashboard
             </Text>
