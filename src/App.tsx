@@ -67,7 +67,7 @@ const AppContent: React.FC = () => {
 
   React.useEffect(() => {
     const path = location.pathname;
-    if (path === '/') setSelected('home');
+    if (path === '/' || path === '') setSelected('home');
     else if (path === '/interview-assignments') setSelected('assignments');
     else if (path === '/interview-analysis') setSelected('analysis');
   }, [location]);
@@ -86,18 +86,14 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  if (!isAuthenticated) {
-    return (
-      <AppProvider i18n={{}}>
-        <PasswordPrompt onCorrectPassword={() => setIsAuthenticated(true)} />
-      </AppProvider>
-    );
-  }
-
   return (
     <AppProvider i18n={{}}>
       <Router>
-        <AppContent />
+        {!isAuthenticated ? (
+          <PasswordPrompt onCorrectPassword={() => setIsAuthenticated(true)} />
+        ) : (
+          <AppContent />
+        )}
       </Router>
     </AppProvider>
   );
