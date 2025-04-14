@@ -1,6 +1,6 @@
 import React from 'react';
-import { Frame, Navigation, Badge } from '@shopify/polaris';
-import { HomeIcon, ListBulletedIcon, ChartLineIcon } from '@shopify/polaris-icons';
+import { Navigation as PolarisNavigation } from '@shopify/polaris';
+import { HomeMinor, ListMinor, AnalyticsMinor } from '@shopify/polaris-icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 interface NavigationProps {
@@ -18,30 +18,30 @@ const NavigationComponent: React.FC<NavigationProps> = ({ selected, onSelect }) 
   };
 
   return (
-    <Navigation location="/">
-      <Navigation.Section
+    <PolarisNavigation location="/">
+      <PolarisNavigation.Section
         items={[
           {
-            label: 'AI Impact Score Analysis',
-            icon: HomeIcon,
+            label: 'AI Impact Score',
+            icon: HomeMinor,
             selected: location.pathname === '/',
             onClick: () => handleNavigation('/', 'home'),
           },
           {
             label: 'AI Interview Assignments',
-            icon: ListBulletedIcon,
+            icon: ListMinor,
             selected: location.pathname === '/interview-assignments',
             onClick: () => handleNavigation('/interview-assignments', 'assignments'),
           },
           {
             label: 'AI Interview Analysis',
-            icon: ChartLineIcon,
+            icon: AnalyticsMinor,
             selected: location.pathname === '/interview-analysis',
             onClick: () => handleNavigation('/interview-analysis', 'analysis'),
           },
         ]}
       />
-    </Navigation>
+    </PolarisNavigation>
   );
 };
 
