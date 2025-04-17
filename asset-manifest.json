@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/revenue-ai-dashboard-2024/static/css/main.abd9ebe3.css",
-    "main.js": "/revenue-ai-dashboard-2024/static/js/main.87be4061.js",
+    "main.js": "/revenue-ai-dashboard-2024/static/js/main.d0dab435.js",
     "static/js/453.09b60c25.chunk.js": "/revenue-ai-dashboard-2024/static/js/453.09b60c25.chunk.js",
     "index.html": "/revenue-ai-dashboard-2024/index.html",
     "main.abd9ebe3.css.map": "/revenue-ai-dashboard-2024/static/css/main.abd9ebe3.css.map",
-    "main.87be4061.js.map": "/revenue-ai-dashboard-2024/static/js/main.87be4061.js.map",
+    "main.d0dab435.js.map": "/revenue-ai-dashboard-2024/static/js/main.d0dab435.js.map",
     "453.09b60c25.chunk.js.map": "/revenue-ai-dashboard-2024/static/js/453.09b60c25.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.abd9ebe3.css",
-    "static/js/main.87be4061.js"
+    "static/js/main.d0dab435.js"
   ]
 }
