@@ -13,10 +13,10 @@ const SHOPIFY_AI_PROXY_TOKEN = process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN || '
 
 // Create axios instance for Shopify AI proxy
 const aiProxy = axios.create({
-  baseURL: SHOPIFY_AI_PROXY_URL,
+  baseURL: 'https://proxy.shopify.ai/v1/chat/completions',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${SHOPIFY_AI_PROXY_TOKEN}`
+    'Authorization': SHOPIFY_AI_PROXY_TOKEN // Use token as-is without adding Bearer prefix
   }
 });
 
@@ -31,7 +31,7 @@ aiProxy.interceptors.request.use(
     console.log('Making request to:', config.url);
     console.log('Full headers:', {
       ...config.headers,
-      Authorization: config.headers?.Authorization ? 'Bearer [REDACTED]' : undefined
+      Authorization: config.headers?.Authorization ? '[REDACTED]' : undefined
     });
     return config;
   },
