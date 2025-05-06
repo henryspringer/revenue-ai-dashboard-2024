@@ -16,7 +16,7 @@ const aiProxy = axios.create({
   baseURL: SHOPIFY_AI_PROXY_URL,
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${SHOPIFY_AI_PROXY_TOKEN}`
+    'Authorization': SHOPIFY_AI_PROXY_TOKEN
   }
 });
 
@@ -26,7 +26,7 @@ aiProxy.interceptors.request.use(
     console.log('Making request to:', config.url);
     console.log('Headers:', {
       ...(config.headers || {}),
-      Authorization: config.headers?.Authorization ? 'Bearer [REDACTED]' : undefined
+      Authorization: config.headers?.Authorization ? '[REDACTED]' : undefined
     });
     return config;
   },
