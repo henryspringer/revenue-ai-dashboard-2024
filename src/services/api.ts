@@ -209,6 +209,9 @@ export const analyzeInterview = async (transcript: string, candidateOutput: stri
 // Add a test connection function
 export const testApiConnection = async () => {
   try {
+    console.log('Testing API connection with URL:', SHOPIFY_AI_PROXY_URL);
+    console.log('Token available:', !!SHOPIFY_AI_PROXY_TOKEN);
+    
     const response = await aiProxy.post<OpenAIResponse>('', {
       model: "gpt-4",
       messages: [
@@ -218,9 +221,16 @@ export const testApiConnection = async () => {
         }
       ]
     });
+    
+    console.log('API Response:', response.data);
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error testing API connection:', error);
+    if (error.response) {
+      console.error('Response data:', error.response.data);
+      console.error('Response status:', error.response.status);
+      console.error('Response headers:', error.response.headers);
+    }
     throw error;
   }
 }; 
