@@ -124,12 +124,12 @@ const AIInterviewAnalysis: React.FC = () => {
           <Card>
             <BlockStack gap="400">
               {testResult && (
-                <Banner status="success">
+                <Banner tone="success">
                   <p>{testResult}</p>
                 </Banner>
               )}
               {testError && (
-                <Banner status="critical">
+                <Banner tone="critical">
                   <p>{testError}</p>
                 </Banner>
               )}
