@@ -235,7 +235,7 @@ export const testApiConnection = async () => {
       messages: [
         {
           role: "user",
-          content: "Test connection"
+          content: `Test connection at ${new Date().toISOString()}`
         }
       ]
     });
