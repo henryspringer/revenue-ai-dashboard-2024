@@ -16,18 +16,20 @@ const aiProxy = axios.create({
   baseURL: SHOPIFY_AI_PROXY_URL,
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${SHOPIFY_AI_PROXY_TOKEN}` // Add Bearer prefix as per Shopify's example
+    'Authorization': `Bearer ${SHOPIFY_AI_PROXY_TOKEN}`
   }
 });
 
 // Add request interceptor for logging
 aiProxy.interceptors.request.use(
   (config) => {
+    console.log('Environment Variables:');
+    console.log('REACT_APP_SHOPIFY_AI_PROXY_URL:', process.env.REACT_APP_SHOPIFY_AI_PROXY_URL);
+    console.log('REACT_APP_SHOPIFY_AI_PROXY_TOKEN exists:', !!process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN);
+    console.log('Token length:', process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN?.length);
     console.log('Making request to:', config.url);
-    console.log('Token available:', !!SHOPIFY_AI_PROXY_TOKEN);
-    console.log('Token length:', SHOPIFY_AI_PROXY_TOKEN.length);
-    console.log('Headers:', {
-      ...(config.headers || {}),
+    console.log('Full headers:', {
+      ...config.headers,
       Authorization: config.headers?.Authorization ? 'Bearer [REDACTED]' : undefined
     });
     return config;
