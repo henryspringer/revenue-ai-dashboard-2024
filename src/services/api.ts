@@ -16,7 +16,7 @@ const aiProxy = axios.create({
   baseURL: SHOPIFY_AI_PROXY_URL,
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': SHOPIFY_AI_PROXY_TOKEN // Remove Bearer prefix as it should be included in the token
+    'Authorization': `Bearer ${SHOPIFY_AI_PROXY_TOKEN}` // Add Bearer prefix as per Shopify's example
   }
 });
 
@@ -28,7 +28,7 @@ aiProxy.interceptors.request.use(
     console.log('Token length:', SHOPIFY_AI_PROXY_TOKEN.length);
     console.log('Headers:', {
       ...(config.headers || {}),
-      Authorization: config.headers?.Authorization ? '[REDACTED]' : undefined
+      Authorization: config.headers?.Authorization ? 'Bearer [REDACTED]' : undefined
     });
     return config;
   },
