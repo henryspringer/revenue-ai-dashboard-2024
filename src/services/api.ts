@@ -27,6 +27,7 @@ aiProxy.interceptors.request.use(
     console.log('REACT_APP_SHOPIFY_AI_PROXY_URL:', process.env.REACT_APP_SHOPIFY_AI_PROXY_URL);
     console.log('REACT_APP_SHOPIFY_AI_PROXY_TOKEN exists:', !!process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN);
     console.log('Token length:', process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN?.length);
+    console.log('Token first 4 chars:', process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN?.substring(0, 4));
     console.log('Making request to:', config.url);
     console.log('Full headers:', {
       ...config.headers,
