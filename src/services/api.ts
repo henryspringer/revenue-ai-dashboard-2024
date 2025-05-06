@@ -20,6 +20,22 @@ const aiProxy = axios.create({
   }
 });
 
+// Add request interceptor for logging
+aiProxy.interceptors.request.use(
+  (config) => {
+    console.log('Making request to:', config.url);
+    console.log('Headers:', {
+      ...(config.headers || {}),
+      Authorization: config.headers?.Authorization ? 'Bearer [REDACTED]' : undefined
+    });
+    return config;
+  },
+  (error) => {
+    console.error('Request error:', error);
+    return Promise.reject(error);
+  }
+);
+
 // Add response interceptor for error handling
 aiProxy.interceptors.response.use(
   (response) => response,
@@ -28,6 +44,8 @@ aiProxy.interceptors.response.use(
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx
       console.error('API Error Response:', error.response.data);
+      console.error('Status:', error.response.status);
+      console.error('Headers:', error.response.headers);
       throw new Error(error.response.data?.message || 'API request failed');
     } else if (error.request) {
       // The request was made but no response was received
