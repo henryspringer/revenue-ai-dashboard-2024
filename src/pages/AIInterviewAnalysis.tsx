@@ -7,10 +7,8 @@ import {
   TextField,
   Button,
   BlockStack,
-  InlineStack,
   ProgressBar,
   List,
-  Badge,
   Banner
 } from '@shopify/polaris';
 import { testApiConnection, analyzeInterview } from '../services/api';

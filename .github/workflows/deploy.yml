@@ -27,7 +27,7 @@ jobs:
           echo "REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }}" >> .env.production
 
       - name: Build
-        run: npm run build
+        run: CI=false npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4

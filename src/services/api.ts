@@ -8,9 +8,8 @@ interface OpenAIResponse {
   }>;
 }
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://api.shopify.com/v1';
-const SHOPIFY_AI_PROXY_URL = process.env.REACT_APP_SHOPIFY_AI_PROXY_URL;
-const SHOPIFY_AI_PROXY_TOKEN = process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN;
+const SHOPIFY_AI_PROXY_URL = process.env.REACT_APP_SHOPIFY_AI_PROXY_URL || 'https://proxy.shopify.ai/v1/chat/completions';
+const SHOPIFY_AI_PROXY_TOKEN = process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN || '';
 
 // Create axios instance for Shopify AI proxy
 const aiProxy = axios.create({

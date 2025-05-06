@@ -1,5 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { AppProvider, Frame, Page, Card, TextField, Button, Text, Box, FormLayout, Banner } from '@shopify/polaris';
+import {
+  Frame,
+  Navigation,
+  TopBar,
+  Page,
+  Layout,
+  Card,
+  Text,
+  TextField,
+  Button,
+  BlockStack,
+  InlineStack,
+  ProgressBar,
+  List,
+  Badge,
+  Banner
+} from '@shopify/polaris';
 import '@shopify/polaris/build/esm/styles.css';
 import { HashRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import NavigationComponent from './components/Navigation';
