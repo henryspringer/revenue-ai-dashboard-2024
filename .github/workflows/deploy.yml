@@ -23,11 +23,26 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Debug Environment Variables
+        run: |
+          echo "Checking if secrets are set:"
+          if [ -n "${{ secrets.REACT_APP_SHOPIFY_AI_PROXY_TOKEN }}" ]; then
+            echo "REACT_APP_SHOPIFY_AI_PROXY_TOKEN is set (length: ${#REACT_APP_SHOPIFY_AI_PROXY_TOKEN})"
+          else
+            echo "REACT_APP_SHOPIFY_AI_PROXY_TOKEN is not set"
+          fi
+          if [ -n "${{ secrets.REACT_APP_SHOPIFY_AI_PROXY_URL }}" ]; then
+            echo "REACT_APP_SHOPIFY_AI_PROXY_URL is set"
+          else
+            echo "REACT_APP_SHOPIFY_AI_PROXY_URL is not set"
+          fi
+
       - name: Create .env.production
         run: |
           echo "REACT_APP_SHOPIFY_AI_PROXY_TOKEN=${{ secrets.REACT_APP_SHOPIFY_AI_PROXY_TOKEN }}" >> .env.production
           echo "REACT_APP_SHOPIFY_AI_PROXY_URL=${{ secrets.REACT_APP_SHOPIFY_AI_PROXY_URL }}" >> .env.production
           echo "REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }}" >> .env.production
+          echo "Created .env.production with environment variables"
 
       - name: Build
         run: CI=false npm run build
