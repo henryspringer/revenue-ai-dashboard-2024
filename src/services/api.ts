@@ -13,26 +13,29 @@ const SHOPIFY_AI_PROXY_TOKEN = process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN || '
 
 // Create axios instance for Shopify AI proxy
 const aiProxy = axios.create({
-  baseURL: 'https://proxy.shopify.ai/v1/chat/completions',
+  baseURL: SHOPIFY_AI_PROXY_URL,
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': SHOPIFY_AI_PROXY_TOKEN // Use token as-is without adding Bearer prefix
+    'Authorization': `Bearer ${SHOPIFY_AI_PROXY_TOKEN}`
   }
 });
 
 // Add request interceptor for logging
 aiProxy.interceptors.request.use(
   (config) => {
-    console.log('Environment Variables:');
-    console.log('REACT_APP_SHOPIFY_AI_PROXY_URL:', process.env.REACT_APP_SHOPIFY_AI_PROXY_URL);
-    console.log('REACT_APP_SHOPIFY_AI_PROXY_TOKEN exists:', !!process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN);
-    console.log('Token length:', process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN?.length);
-    console.log('Token first 4 chars:', process.env.REACT_APP_SHOPIFY_AI_PROXY_TOKEN?.substring(0, 4));
-    console.log('Making request to:', config.url);
-    console.log('Full headers:', {
-      ...config.headers,
-      Authorization: config.headers?.Authorization ? '[REDACTED]' : undefined
-    });
+    // Only log in development
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Environment Variables:');
+      console.log('REACT_APP_SHOPIFY_AI_PROXY_URL:', SHOPIFY_AI_PROXY_URL);
+      console.log('REACT_APP_SHOPIFY_AI_PROXY_TOKEN exists:', !!SHOPIFY_AI_PROXY_TOKEN);
+      console.log('Token length:', SHOPIFY_AI_PROXY_TOKEN?.length);
+      console.log('Token first 4 chars:', SHOPIFY_AI_PROXY_TOKEN?.substring(0, 4));
+      console.log('Making request to:', config.url);
+      console.log('Full headers:', {
+        ...config.headers,
+        Authorization: config.headers?.Authorization ? 'Bearer [REDACTED]' : undefined
+      });
+    }
     return config;
   },
   (error) => {
@@ -73,66 +76,64 @@ export const analyzeInterview = async (transcript: string, candidateOutput: stri
       Role: Expert Interviewer analyzing AI readiness for sales roles at Shopify
 
       Context:
-      - Focus on evaluating how effectively candidates can leverage AI tools in their sales process
-      - Consider Shopify's specific sales environment and tools
-      - Emphasize practical applications in a sales context
+      - Primary focus: Evaluate if and how candidates leverage AI tools in their sales process
+      - Secondary focus: Quality of AI implementation and understanding
+      - Must explicitly mention AI tools/usage to score above 4
 
       Scoring Guidelines:
       9-10: Exceptional AI Integration
-         - Innovative and creative use of AI tools
-         - Seamless integration into sales workflows
-         - Clear and compelling explanation of AI usage
-         - Demonstrated impact on sales performance
-         - Proactive in identifying new AI opportunities
+         - Explicitly mentions using AI tools (e.g., GPT, Claude, other AI assistants)
+         - Demonstrates deep understanding of AI capabilities
+         - Shows innovative and creative use of AI in sales workflows
+         - Provides specific examples of AI usage
+         - Explains how AI improved their sales process
       
       7-8: Strong AI Usage
-         - Effective implementation of AI tools
-         - Good understanding of tool capabilities
-         - Clear explanation of AI processes
-         - Consistent use in relevant scenarios
-         - Some innovation in application
+         - Clearly mentions using AI tools
+         - Shows good understanding of AI capabilities
+         - Provides examples of AI implementation
+         - Explains AI usage in their process
+         - Demonstrates consistent use of AI
       
       5-6: Basic AI Usage
-         - Functional use of AI tools
-         - Adequate implementation in key areas
-         - Basic explanation of AI usage
-         - Follows established patterns
-         - Limited innovation
+         - Mentions AI tools but lacks depth
+         - Basic implementation of AI
+         - Limited explanation of AI usage
+         - Some examples of AI application
+         - Follows basic AI patterns
       
       3-4: Limited AI Usage
-         - Minimal use of AI tools
-         - Basic implementation only
-         - Unclear or incomplete explanation
+         - Minimal or vague mention of AI
+         - No specific AI tools mentioned
+         - Unclear how AI was used
          - Relies heavily on manual processes
-         - Limited understanding of AI capabilities
+         - Limited understanding of AI
       
       1-2: No AI Usage
-         - Manual approach to tasks
-         - No AI tool implementation
+         - No mention of AI tools or usage
+         - Manual approach to all tasks
+         - No AI implementation
          - No explanation of AI processes
-         - Missed opportunities for automation
-         - Resistance to AI adoption
+         - Missed opportunities for AI automation
 
       Evaluation Criteria:
-      1. AI Tool Selection (Weight: 0.3)
-         - Appropriate selection of AI tools for sales tasks
-         - Understanding of tool capabilities and limitations
-         - Integration with existing sales workflows
+      1. AI Tool Usage (Weight: 0.5)
+         - Explicit mention of AI tools
+         - Specific examples of AI usage
+         - Understanding of AI capabilities
+         - Integration with sales workflow
 
       2. AI Implementation (Weight: 0.3)
-         - Effective use of AI in sales scenarios
+         - Quality of AI usage
          - Efficiency in tool usage
-         - Quality of AI-assisted outputs
+         - AI-assisted outputs
+         - Process improvement
 
-      3. AI Explanation (Weight: 0.2)
-         - Clear communication of AI usage
-         - Understanding of AI processes
-         - Ability to explain AI decisions
-
-      4. AI Innovation (Weight: 0.2)
-         - Creative use of AI capabilities
-         - Unique applications in sales context
-         - Potential for process improvement
+      3. AI Understanding (Weight: 0.2)
+         - Knowledge of AI capabilities
+         - Understanding of AI limitations
+         - Ability to explain AI usage
+         - AI tool selection rationale
 
       Assignment: ${assignment}
       
@@ -146,7 +147,8 @@ export const analyzeInterview = async (transcript: string, candidateOutput: stri
           "score": number,
           "rationale": string,
           "scoringLevel": string,
-          "justification": string
+          "justification": string,
+          "aiUsage": "Yes/No"
         },
         "keyStrengths": [
           {
@@ -174,7 +176,7 @@ export const analyzeInterview = async (transcript: string, candidateOutput: stri
           }
         ],
         "detailedAnalysis": {
-          "toolSelection": {
+          "toolUsage": {
             "assessment": number,
             "scoringLevel": string,
             "evidence": string[],
@@ -186,41 +188,31 @@ export const analyzeInterview = async (transcript: string, candidateOutput: stri
             "evidence": string[],
             "impact": string
           },
-          "explanation": {
-            "assessment": number,
-            "scoringLevel": string,
-            "evidence": string[],
-            "impact": string
-          },
-          "innovation": {
+          "understanding": {
             "assessment": number,
             "scoringLevel": string,
             "evidence": string[],
             "impact": string
           }
         }
-      }
-
-      Provide specific examples and quotes from the transcript to support your analysis.
-      Consider the weighted importance of each criterion in the final score.
-    `;
+      }`;
 
     const response = await aiProxy.post<OpenAIResponse>('', {
-      model: "gpt-4",
+      model: 'gpt-4',
       messages: [
         {
-          role: "system",
-          content: "You are an expert at analyzing how candidates use AI tools in their work. Provide detailed, constructive feedback based on the provided scoring guidelines. Focus on practical applications in a sales context."
+          role: 'system',
+          content: 'You are an expert interviewer analyzing AI readiness for sales roles at Shopify. Your task is to evaluate how effectively candidates leverage AI tools in their sales process.'
         },
         {
-          role: "user",
+          role: 'user',
           content: prompt
         }
       ],
-      temperature: 0.7
+      temperature: 0.7,
+      max_tokens: 2000
     });
 
-    // Parse the AI response
     const aiResponse = response.data.choices[0].message.content;
     return JSON.parse(aiResponse);
   } catch (error) {
@@ -234,6 +226,7 @@ export const testApiConnection = async () => {
   try {
     console.log('Testing API connection with URL:', SHOPIFY_AI_PROXY_URL);
     console.log('Token available:', !!SHOPIFY_AI_PROXY_TOKEN);
+    console.log('Token format:', SHOPIFY_AI_PROXY_TOKEN?.substring(0, 20) + '...');
     
     const response = await aiProxy.post<OpenAIResponse>('', {
       model: "gpt-4",
@@ -253,6 +246,7 @@ export const testApiConnection = async () => {
       console.error('Response data:', error.response.data);
       console.error('Response status:', error.response.status);
       console.error('Response headers:', error.response.headers);
+      console.error('Request headers:', error.config?.headers);
     }
     throw error;
   }
