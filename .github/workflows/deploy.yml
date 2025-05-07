@@ -44,6 +44,9 @@ jobs:
           echo "REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }}" >> .env.production
           echo "Created .env.production with environment variables"
 
+      - name: Print .env.production
+        run: cat .env.production
+
       - name: Build
         run: CI=false npm run build
 
@@ -51,9 +54,9 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
-          branch: gh-pages 
+          branch: gh-pages
 
-                - name: Debug Test Secret
+      - name: Debug Test Secret
         run: |
           if [ -n "${{ secrets.SHOPIFY_TEST_TOKEN }}" ]; then
             echo "SHOPIFY_TEST_TOKEN is set (length: ${#SHOPIFY_TEST_TOKEN})"
