@@ -227,6 +227,7 @@ const AIInterviewAssignments: React.FC = () => {
   });
 
   return (
+    <div>TEST_BLOCK_123</div>
     <Page
       title="AI Interview Assignments"
       subtitle="View and manage AI-focused interview scenarios for different roles, including success criteria and evaluation frameworks."
