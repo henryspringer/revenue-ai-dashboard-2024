@@ -232,6 +232,30 @@ const AIInterviewAssignments: React.FC = () => {
       subtitle="View and manage AI-focused interview scenarios for different roles, including success criteria and evaluation frameworks."
     >
       <Layout>
+        {/* Context Block */}
+        <Layout.Section>
+          <Card>
+            <div style={{ padding: '1rem' }}>
+              <Text as="h2" variant="headingMd">Interview Assignment Context</Text>
+              <div style={{ marginTop: '1rem' }}>
+                <Text as="h3" variant="headingSm">What we are trying to achieve</Text>
+                <Text as="p" variant="bodyMd">
+                  Building an AI-first hiring framework across Revenue to identify candidates who naturally leverage AI tools.<br /><br />
+                  This interview assignment is designed to assess how candidates approach real-world sales scenarios using AI tools, creativity, and problem-solving.
+                </Text>
+              </div>
+              <div style={{ marginTop: '1rem' }}>
+                <Text as="h3" variant="headingSm">TL;DR: How to run the assignment</Text>
+                <List>
+                  <List.Item>Review the assignment brief.</List.Item>
+                  <List.Item>Ask the candidate to complete the task using any tools they wish.</List.Item>
+                  <List.Item>Submit their output for AI-driven analysis and feedback.</List.Item>
+                </List>
+              </div>
+            </div>
+          </Card>
+        </Layout.Section>
+
         <Layout.Section>
           <Card>
             <div style={{ padding: '1rem' }}>
