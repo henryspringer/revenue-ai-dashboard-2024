@@ -52,3 +52,11 @@ jobs:
         with:
           folder: build
           branch: gh-pages 
+
+                - name: Debug Test Secret
+        run: |
+          if [ -n "${{ secrets.SHOPIFY_TEST_TOKEN }}" ]; then
+            echo "SHOPIFY_TEST_TOKEN is set (length: ${#SHOPIFY_TEST_TOKEN})"
+          else
+            echo "SHOPIFY_TEST_TOKEN is not set"
+          fi 
