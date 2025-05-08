@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Page, Layout, Card, DataTable, Text, Badge, List, TextField } from '@shopify/polaris';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link as RouterLink } from 'react-router-dom';
 
 interface InterviewAssignment {
   role: string;
@@ -227,126 +227,128 @@ const AIInterviewAssignments: React.FC = () => {
   });
 
   return (
-    <>
-      <div>TEST_BLOCK_123</div>
-      <Page
-        title="AI Interview Assignments"
-        subtitle="View and manage AI-focused interview scenarios for different roles, including success criteria and evaluation frameworks."
-      >
-        <Layout>
-          {/* Context Block */}
+    <Page
+      title="AI Interview Assignments"
+      subtitle="Review and manage AI-focused interview scenarios and evaluation criteria"
+    >
+      <Layout>
+        {/* What we are trying to achieve Block */}
+        <Layout.Section>
+          <Card>
+            <div style={{ padding: '1rem' }}>
+              <Text as="h2" variant="headingMd" tone="success">What we are trying to achieve</Text>
+              <Text as="p" variant="bodyMd">
+                Building an AI-first hiring framework across Revenue to identify candidates who naturally leverage AI tools. This interview assignment is designed to assess how candidates approach real-world sales scenarios using AI tools, creativity, and problem-solving.
+              </Text>
+            </div>
+          </Card>
+        </Layout.Section>
+        {/* How to run the assignment Block */}
+        <Layout.Section>
+          <Card>
+            <div style={{ padding: '1rem' }}>
+              <Text as="h2" variant="headingMd" tone="success">How to run the assignment</Text>
+              <List>
+                <List.Item>Review the assignment brief.</List.Item>
+                <List.Item>Ask the candidate to complete the task using any tools they wish.</List.Item>
+                <List.Item>
+                  <RouterLink to="/interview-analysis">
+                    Submit their output for AI-driven analysis and feedback.
+                  </RouterLink>
+                </List.Item>
+              </List>
+            </div>
+          </Card>
+        </Layout.Section>
+
+        <Layout.Section>
+          <Card>
+            <div style={{ padding: '1rem' }}>
+              <TextField
+                label="Search Roles"
+                value={searchQuery}
+                onChange={setSearchQuery}
+                placeholder="Search by job title..."
+                autoComplete="off"
+              />
+            </div>
+          </Card>
+        </Layout.Section>
+
+        <Layout.Section>
+          <Card>
+            <DataTable
+              columnContentTypes={['text', 'text', 'text']}
+              headings={['Role', 'Scenario', 'Time']}
+              rows={rows}
+            />
+          </Card>
+        </Layout.Section>
+
+        {selectedRole && (
           <Layout.Section>
             <Card>
               <div style={{ padding: '1rem' }}>
-                <Text as="h2" variant="headingMd">Interview Assignment Context</Text>
-                <div style={{ marginTop: '1rem' }}>
-                  <Text as="h3" variant="headingSm">What we are trying to achieve</Text>
-                  <Text as="p" variant="bodyMd">
-                    Building an AI-first hiring framework across Revenue to identify candidates who naturally leverage AI tools.<br /><br />
-                    This interview assignment is designed to assess how candidates approach real-world sales scenarios using AI tools, creativity, and problem-solving.
+                <div 
+                  onClick={() => toggleRole(selectedRole)}
+                  style={{ cursor: 'pointer', marginBottom: '1rem' }}
+                >
+                  <Text as="h2" variant="headingMd" tone="success">
+                    {selectedRole}
                   </Text>
                 </div>
+                
                 <div style={{ marginTop: '1rem' }}>
-                  <Text as="h3" variant="headingSm">TL;DR: How to run the assignment</Text>
+                  <Text as="h3" variant="headingSm">Scenario</Text>
+                  <Text as="p" variant="bodyMd">{assignments[selectedRole].scenario}</Text>
+                </div>
+
+                <div style={{ marginTop: '1rem' }}>
+                  <Text as="h3" variant="headingSm">Context</Text>
                   <List>
-                    <List.Item>Review the assignment brief.</List.Item>
-                    <List.Item>Ask the candidate to complete the task using any tools they wish.</List.Item>
-                    <List.Item>Submit their output for AI-driven analysis and feedback.</List.Item>
+                    {assignments[selectedRole].context.map((item, index) => (
+                      <List.Item key={index}>{item}</List.Item>
+                    ))}
+                  </List>
+                </div>
+
+                <div style={{ marginTop: '1rem' }}>
+                  <Text as="h3" variant="headingSm">Task</Text>
+                  <Text as="p" variant="bodyMd">{assignments[selectedRole].task}</Text>
+                </div>
+
+                <div style={{ marginTop: '1rem' }}>
+                  <Text as="h3" variant="headingSm">Evaluation Criteria</Text>
+                  <List>
+                    {assignments[selectedRole].evaluationCriteria.map((item, index) => (
+                      <List.Item key={index}>{item}</List.Item>
+                    ))}
+                  </List>
+                </div>
+
+                <div style={{ marginTop: '1rem' }}>
+                  <Text as="h3" variant="headingSm">Success Indicators</Text>
+                  <List>
+                    {assignments[selectedRole].successIndicators.map((item, index) => (
+                      <List.Item key={index}>{item}</List.Item>
+                    ))}
+                  </List>
+                </div>
+
+                <div style={{ marginTop: '1rem' }}>
+                  <Text as="h3" variant="headingSm">Failure Indicators</Text>
+                  <List>
+                    {assignments[selectedRole].failureIndicators.map((item, index) => (
+                      <List.Item key={index}>{item}</List.Item>
+                    ))}
                   </List>
                 </div>
               </div>
             </Card>
           </Layout.Section>
-
-          <Layout.Section>
-            <Card>
-              <div style={{ padding: '1rem' }}>
-                <TextField
-                  label="Search Roles"
-                  value={searchQuery}
-                  onChange={setSearchQuery}
-                  placeholder="Search by job title..."
-                  autoComplete="off"
-                />
-              </div>
-            </Card>
-          </Layout.Section>
-
-          <Layout.Section>
-            <Card>
-              <DataTable
-                columnContentTypes={['text', 'text', 'text']}
-                headings={['Role', 'Scenario', 'Time']}
-                rows={rows}
-              />
-            </Card>
-          </Layout.Section>
-
-          {selectedRole && (
-            <Layout.Section>
-              <Card>
-                <div style={{ padding: '1rem' }}>
-                  <div 
-                    onClick={() => toggleRole(selectedRole)}
-                    style={{ cursor: 'pointer', marginBottom: '1rem' }}
-                  >
-                    <Text as="h2" variant="headingMd" tone="success">
-                      {selectedRole}
-                    </Text>
-                  </div>
-                  
-                  <div style={{ marginTop: '1rem' }}>
-                    <Text as="h3" variant="headingSm">Scenario</Text>
-                    <Text as="p" variant="bodyMd">{assignments[selectedRole].scenario}</Text>
-                  </div>
-
-                  <div style={{ marginTop: '1rem' }}>
-                    <Text as="h3" variant="headingSm">Context</Text>
-                    <List>
-                      {assignments[selectedRole].context.map((item, index) => (
-                        <List.Item key={index}>{item}</List.Item>
-                      ))}
-                    </List>
-                  </div>
-
-                  <div style={{ marginTop: '1rem' }}>
-                    <Text as="h3" variant="headingSm">Task</Text>
-                    <Text as="p" variant="bodyMd">{assignments[selectedRole].task}</Text>
-                  </div>
-
-                  <div style={{ marginTop: '1rem' }}>
-                    <Text as="h3" variant="headingSm">Evaluation Criteria</Text>
-                    <List>
-                      {assignments[selectedRole].evaluationCriteria.map((item, index) => (
-                        <List.Item key={index}>{item}</List.Item>
-                      ))}
-                    </List>
-                  </div>
-
-                  <div style={{ marginTop: '1rem' }}>
-                    <Text as="h3" variant="headingSm">Success Indicators</Text>
-                    <List>
-                      {assignments[selectedRole].successIndicators.map((item, index) => (
-                        <List.Item key={index}>{item}</List.Item>
-                      ))}
-                    </List>
-                  </div>
-
-                  <div style={{ marginTop: '1rem' }}>
-                    <Text as="h3" variant="headingSm">Failure Indicators</Text>
-                    <List>
-                      {assignments[selectedRole].failureIndicators.map((item, index) => (
-                        <List.Item key={index}>{item}</List.Item>
-                      ))}
-                    </List>
-                  </div>
-                </div>
-              </Card>
-            </Layout.Section>
-          )}
-        </Layout>
-      </Page>
-    </>
+        )}
+      </Layout>
+    </Page>
   );
 };
 

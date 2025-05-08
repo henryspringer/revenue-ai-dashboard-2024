@@ -48,7 +48,7 @@ const PasswordPrompt: React.FC<{ onCorrectPassword: () => void }> = ({ onCorrect
       <div style={{ padding: '2rem' }}>
         <Card>
           <div style={{ padding: '1rem' }}>
-            <Text as="h2" variant="headingLg">
+            <Text as="h2" variant="headingLg" tone="success">
               Shopify Revenue AI Analysis Dashboard
             </Text>
             <div style={{ paddingTop: '1rem' }}>
@@ -69,7 +69,7 @@ const PasswordPrompt: React.FC<{ onCorrectPassword: () => void }> = ({ onCorrect
                   onFocus={() => {}}
                 />
                 <div style={{ marginTop: '1rem' }}>
-                  <Button variant="primary" onClick={handleSubmit}>
+                  <Button variant="primary" onClick={handleSubmit} tone="success">
                     Access Dashboard
                   </Button>
                 </div>
@@ -104,8 +104,19 @@ const AppContent: React.FC = () => {
     <Frame 
       navigation={<NavigationComponent selected={selected} onSelect={setSelected} />}
       topBar={
-        <div style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'flex-end' }}>
-          <Button onClick={handleLogout}>Logout</Button>
+        <div style={{ 
+          padding: '1rem', 
+          display: 'flex', 
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderBottom: '1px solid #49fb77ff',
+          backgroundColor: '#49fb77ff',
+          boxShadow: '0 2px 4px rgba(73, 251, 119, 0.2)'
+        }}>
+          <Text as="h1" variant="headingLg" fontWeight="bold" tone="base">
+            Revenue AI First Hiring
+          </Text>
+          <Button onClick={handleLogout} tone="success">Logout</Button>
         </div>
       }
     >

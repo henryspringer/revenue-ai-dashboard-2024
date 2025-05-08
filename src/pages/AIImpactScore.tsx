@@ -525,8 +525,8 @@ const AIImpactScore: React.FC = () => {
 
   return (
     <Page
-      title="AI Impact Score Analysis"
-      subtitle="Analyze how AI can impact different revenue roles, with detailed scoring and recommendations for AI integration."
+      title="AI Impact Score"
+      subtitle="Evaluate and track AI readiness and impact across different roles"
     >
       <Layout>
         {/* Condensed Summary Section */}
@@ -534,7 +534,7 @@ const AIImpactScore: React.FC = () => {
           <Card>
             <div style={{ padding: '1rem', display: 'flex', alignItems: 'center', gap: '2rem' }}>
               <div>
-                <Text variant="headingMd" as="h2">Current AI Readiness</Text>
+                <Text variant="headingMd" as="h2" tone="success">Current AI Readiness</Text>
                 <div style={{ display: 'flex', gap: '2rem', marginTop: '0.5rem' }}>
                   <Text as="span">Roles Analyzed: <strong>{summaryStats.totalRoles}</strong></Text>
                   <Text as="span">Avg Impact Score: <strong>{summaryStats.avgScore}/10</strong></Text>
@@ -549,7 +549,7 @@ const AIImpactScore: React.FC = () => {
         <Layout.Section>
           <Card>
             <div style={{ padding: '1rem' }}>
-              <Text as="h2" variant="headingMd">Shopify AI Context</Text>
+              <Text as="h2" variant="headingMd" tone="success">Shopify AI Context</Text>
               <List>
                 <List.Item>Employees have access to comprehensive AI tools</List.Item>
                 <List.Item>Current AI adoption is at 2/10 across the organization</List.Item>

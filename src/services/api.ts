@@ -23,19 +23,17 @@ const aiProxy = axios.create({
 // Add request interceptor for logging
 aiProxy.interceptors.request.use(
   (config) => {
-    // Only log in development
-    if (process.env.NODE_ENV === 'development') {
-      console.log('Environment Variables:');
-      console.log('REACT_APP_SHOPIFY_AI_PROXY_URL:', SHOPIFY_AI_PROXY_URL);
-      console.log('REACT_APP_SHOPIFY_AI_PROXY_TOKEN exists:', !!SHOPIFY_AI_PROXY_TOKEN);
-      console.log('Token length:', SHOPIFY_AI_PROXY_TOKEN?.length);
-      console.log('Token first 4 chars:', SHOPIFY_AI_PROXY_TOKEN?.substring(0, 4));
-      console.log('Making request to:', config.url);
-      console.log('Full headers:', {
-        ...config.headers,
-        Authorization: config.headers?.Authorization ? '[REDACTED]' : undefined
-      });
-    }
+    // Log in both development and production
+    console.log('Environment Variables:');
+    console.log('REACT_APP_SHOPIFY_AI_PROXY_URL:', SHOPIFY_AI_PROXY_URL);
+    console.log('REACT_APP_SHOPIFY_AI_PROXY_TOKEN exists:', !!SHOPIFY_AI_PROXY_TOKEN);
+    console.log('Token length:', SHOPIFY_AI_PROXY_TOKEN?.length);
+    console.log('Token first 4 chars:', SHOPIFY_AI_PROXY_TOKEN?.substring(0, 4));
+    console.log('Making request to:', config.url);
+    console.log('Full headers:', {
+      ...config.headers,
+      Authorization: config.headers?.Authorization ? '[REDACTED]' : undefined
+    });
     return config;
   },
   (error) => {
