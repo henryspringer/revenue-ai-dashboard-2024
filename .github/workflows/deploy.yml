@@ -1,34 +1,20 @@
 # Simple workflow for deploying static content to GitHub Pages
-
 name: Deploy to GitHub Pages
 
 on:
-  # Runs on pushes to any branch
   push:
     branches:
       - "*"
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: write
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -41,30 +27,6 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
-
-      - name: Debug Environment Variables
-        run: |
-          echo "Checking if secrets are set:"
-          if [ -n "${{ secrets.REACT_APP_SHOPIFY_AI_PROXY_TOKEN }}" ]; then
-            echo "REACT_APP_SHOPIFY_AI_PROXY_TOKEN is set (length: ${#REACT_APP_SHOPIFY_AI_PROXY_TOKEN})"
-          else
-            echo "REACT_APP_SHOPIFY_AI_PROXY_TOKEN is not set"
-          fi
-          if [ -n "${{ secrets.REACT_APP_SHOPIFY_AI_PROXY_URL }}" ]; then
-            echo "REACT_APP_SHOPIFY_AI_PROXY_URL is set"
-          else
-            echo "REACT_APP_SHOPIFY_AI_PROXY_URL is not set"
-          fi
-
-      - name: Create .env.production
-        run: |
-          echo "REACT_APP_SHOPIFY_AI_PROXY_TOKEN=${{ secrets.REACT_APP_SHOPIFY_AI_PROXY_TOKEN }}" >> .env.production
-          echo "REACT_APP_SHOPIFY_AI_PROXY_URL=${{ secrets.REACT_APP_SHOPIFY_AI_PROXY_URL }}" >> .env.production
-          echo "REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }}" >> .env.production
-          echo "Created .env.production with environment variables"
-
-      - name: Print .env.production
-        run: cat .env.production
 
       - name: Build
         run: |
@@ -82,5 +44,4 @@ jobs:
           path: "./build"
 
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v2
