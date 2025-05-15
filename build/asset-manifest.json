@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/revenue-ai-dashboard-2024/static/css/main.abd9ebe3.css",
-    "main.js": "/revenue-ai-dashboard-2024/static/js/main.a26d9a9c.js",
-    "static/js/453.979267ef.chunk.js": "/revenue-ai-dashboard-2024/static/js/453.979267ef.chunk.js",
-    "index.html": "/revenue-ai-dashboard-2024/index.html",
-    "main.abd9ebe3.css.map": "/revenue-ai-dashboard-2024/static/css/main.abd9ebe3.css.map",
-    "main.a26d9a9c.js.map": "/revenue-ai-dashboard-2024/static/js/main.a26d9a9c.js.map",
-    "453.979267ef.chunk.js.map": "/revenue-ai-dashboard-2024/static/js/453.979267ef.chunk.js.map"
+    "main.css": "/revenue-ai-first-hiring/static/css/main.abd9ebe3.css",
+    "main.js": "/revenue-ai-first-hiring/static/js/main.7eda3b10.js",
+    "static/js/453.09b60c25.chunk.js": "/revenue-ai-first-hiring/static/js/453.09b60c25.chunk.js",
+    "index.html": "/revenue-ai-first-hiring/index.html",
+    "main.abd9ebe3.css.map": "/revenue-ai-first-hiring/static/css/main.abd9ebe3.css.map",
+    "main.7eda3b10.js.map": "/revenue-ai-first-hiring/static/js/main.7eda3b10.js.map",
+    "453.09b60c25.chunk.js.map": "/revenue-ai-first-hiring/static/js/453.09b60c25.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.abd9ebe3.css",
-    "static/js/main.a26d9a9c.js"
+    "static/js/main.7eda3b10.js"
   ]
 }
