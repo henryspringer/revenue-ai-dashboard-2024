@@ -1,8 +1,8 @@
 {
-  "name": "revenue-ai-analysis",
+  "name": "revenue-ai-dashboard-2024",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://henryspringer.github.io/revenue-ai-first-hiring",
+  "homepage": "https://henryspringer.github.io/revenue-ai-dashboard-2024",
   "dependencies": {
     "@shopify/polaris": "^12.0.0",
     "@shopify/polaris-icons": "^7.0.0",
