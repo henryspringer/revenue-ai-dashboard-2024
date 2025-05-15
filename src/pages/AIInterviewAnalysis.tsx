@@ -12,7 +12,19 @@ import {
   Box,
   InlineStack,
   Icon,
-  Divider
+  Divider,
+  LegacyCard,
+  LegacyStack,
+  LegacyTabs,
+  TextContainer,
+  Link,
+  EmptyState,
+  FormLayout,
+  Form,
+  ButtonGroup,
+  Tooltip,
+  Popover,
+  Tabs
 } from '@shopify/polaris';
 import { analyzeAIReadiness, type AnalysisResult } from '../services/interviewAnalysis';
 

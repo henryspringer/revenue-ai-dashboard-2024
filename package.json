@@ -2,7 +2,7 @@
   "name": "revenue-ai-analysis",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://henryspringer.github.io/revenue-ai-first-hiring",
   "dependencies": {
     "@shopify/polaris": "^12.0.0",
     "@shopify/polaris-icons": "^7.0.0",

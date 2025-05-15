@@ -2,6 +2,7 @@ import axios from 'axios';
 
 interface OpenAIResponse {
   choices: Array<{
+    text: string;
     message: {
       content: string;
     };
