@@ -3,10 +3,10 @@ import { Page, Layout, Card, DataTable, Text, Badge, List, ProgressBar, TextFiel
 import { useNavigate } from 'react-router-dom';
 
 interface RoleScores {
-  'Task Automation': number;
-  'Data Analysis': number;
-  'Customer Interaction': number;
-  'Strategic Planning': number;
+  'Automatización de Tareas': number;
+  'Análisis de Datos': number;
+  'Interacción con Clientes': number;
+  'Planificación Estratégica': number;
 }
 
 interface CurrentState {
@@ -32,10 +32,10 @@ const AIImpactScore: React.FC = () => {
     'Solutions Architect POS': {
       overallScore: 5.0,
       scores: {
-        'Task Automation': 5,
-        'Data Analysis': 6,
-        'Customer Interaction': 4,
-        'Strategic Planning': 5
+        'Automatización de Tareas': 5,
+        'Análisis de Datos': 6,
+        'Interacción con Clientes': 4,
+        'Planificación Estratégica': 5
       },
       suggestions: [
         'Use AI for basic technical documentation assistance',
@@ -63,10 +63,10 @@ const AIImpactScore: React.FC = () => {
     'Account Executive (Existing Business - EMEA)': {
       overallScore: 6.0,
       scores: {
-        'Task Automation': 6,
-        'Data Analysis': 7,
-        'Customer Interaction': 5,
-        'Strategic Planning': 6
+        'Automatización de Tareas': 6,
+        'Análisis de Datos': 7,
+        'Interacción con Clientes': 5,
+        'Planificación Estratégica': 6
       },
       suggestions: [
         'Implement AI for automated account health monitoring',
@@ -94,10 +94,10 @@ const AIImpactScore: React.FC = () => {
     'Sales Development Representative (SDR)': {
       overallScore: 6.5,
       scores: {
-        'Task Automation': 8,
-        'Data Analysis': 7,
-        'Customer Interaction': 6,
-        'Strategic Planning': 5
+        'Automatización de Tareas': 8,
+        'Análisis de Datos': 7,
+        'Interacción con Clientes': 6,
+        'Planificación Estratégica': 5
       },
       suggestions: [
         'Implement AI for automated lead scoring and outreach',
@@ -125,10 +125,10 @@ const AIImpactScore: React.FC = () => {
     'Regional L&D Lead, GTM Enablement': {
       overallScore: 7.0,
       scores: {
-        'Task Automation': 7,
-        'Data Analysis': 8,
-        'Customer Interaction': 6,
-        'Strategic Planning': 7
+        'Automatización de Tareas': 7,
+        'Análisis de Datos': 8,
+        'Interacción con Clientes': 6,
+        'Planificación Estratégica': 7
       },
       suggestions: [
         'Use AI to personalize learning paths',
@@ -156,10 +156,10 @@ const AIImpactScore: React.FC = () => {
     'Channel Partner Manager (Singapore)': {
       overallScore: 6.5,
       scores: {
-        'Task Automation': 7,
-        'Data Analysis': 7,
-        'Customer Interaction': 6,
-        'Strategic Planning': 6
+        'Automatización de Tareas': 7,
+        'Análisis de Datos': 7,
+        'Interacción con Clientes': 6,
+        'Planificación Estratégica': 6
       },
       suggestions: [
         'Implement AI for automated partner performance tracking',
@@ -188,10 +188,10 @@ const AIImpactScore: React.FC = () => {
     'Enterprise Account Executive (Global Accounts)': {
       overallScore: 6.0,
       scores: {
-        'Task Automation': 6,
-        'Data Analysis': 7,
-        'Customer Interaction': 5,
-        'Strategic Planning': 6
+        'Automatización de Tareas': 6,
+        'Análisis de Datos': 7,
+        'Interacción con Clientes': 5,
+        'Planificación Estratégica': 6
       },
       suggestions: [
         'Use AI to analyze prospect\'s digital footprint',
@@ -219,10 +219,10 @@ const AIImpactScore: React.FC = () => {
     'Merchant Success Manager': {
       overallScore: 6.5,
       scores: {
-        'Task Automation': 7,
-        'Data Analysis': 7,
-        'Customer Interaction': 6,
-        'Strategic Planning': 6
+        'Automatización de Tareas': 7,
+        'Análisis de Datos': 7,
+        'Interacción con Clientes': 6,
+        'Planificación Estratégica': 6
       },
       suggestions: [
         'Implement AI for automated merchant performance tracking',
@@ -251,10 +251,10 @@ const AIImpactScore: React.FC = () => {
     'Partner Marketing Manager (Longtail Agency Partners)': {
       overallScore: 6.5,
       scores: {
-        'Task Automation': 7,
-        'Data Analysis': 7,
-        'Customer Interaction': 6,
-        'Strategic Planning': 6
+        'Automatización de Tareas': 7,
+        'Análisis de Datos': 7,
+        'Interacción con Clientes': 6,
+        'Planificación Estratégica': 6
       },
       suggestions: [
         'Implement AI for automated marketing performance tracking',
@@ -283,10 +283,10 @@ const AIImpactScore: React.FC = () => {
     'Revenue Operations Specialist (Launch Operations)': {
       overallScore: 6.5,
       scores: {
-        'Task Automation': 7,
-        'Data Analysis': 7,
-        'Customer Interaction': 6,
-        'Strategic Planning': 6
+        'Automatización de Tareas': 7,
+        'Análisis de Datos': 7,
+        'Interacción con Clientes': 6,
+        'Planificación Estratégica': 6
       },
       suggestions: [
         'Implement AI for automated operations performance tracking',
@@ -315,10 +315,10 @@ const AIImpactScore: React.FC = () => {
     'Revenue Operations Specialist': {
       overallScore: 7.5,
       scores: {
-        'Task Automation': 8,
-        'Data Analysis': 8,
-        'Customer Interaction': 6,
-        'Strategic Planning': 8
+        'Automatización de Tareas': 8,
+        'Análisis de Datos': 8,
+        'Interacción con Clientes': 6,
+        'Planificación Estratégica': 8
       },
       suggestions: [
         'Implement AI for process mapping and bottleneck analysis',
@@ -346,10 +346,10 @@ const AIImpactScore: React.FC = () => {
     'SMB Account Executive': {
       overallScore: 6.5,
       scores: {
-        'Task Automation': 7,
-        'Data Analysis': 7,
-        'Customer Interaction': 6,
-        'Strategic Planning': 6
+        'Automatización de Tareas': 7,
+        'Análisis de Datos': 7,
+        'Interacción con Clientes': 6,
+        'Planificación Estratégica': 6
       },
       suggestions: [
         'Use AI to quickly research competitor weaknesses',
@@ -377,10 +377,10 @@ const AIImpactScore: React.FC = () => {
     'Enterprise Account Executive': {
       overallScore: 6.0,
       scores: {
-        'Task Automation': 6,
-        'Data Analysis': 7,
-        'Customer Interaction': 5,
-        'Strategic Planning': 6
+        'Automatización de Tareas': 6,
+        'Análisis de Datos': 7,
+        'Interacción con Clientes': 5,
+        'Planificación Estratégica': 6
       },
       suggestions: [
         'Use AI to analyze prospect\'s digital footprint',
@@ -408,10 +408,10 @@ const AIImpactScore: React.FC = () => {
     'Senior Solutions Engineer': {
       overallScore: 6.5,
       scores: {
-        'Task Automation': 7,
-        'Data Analysis': 7,
-        'Customer Interaction': 6,
-        'Strategic Planning': 6
+        'Automatización de Tareas': 7,
+        'Análisis de Datos': 7,
+        'Interacción con Clientes': 6,
+        'Planificación Estratégica': 6
       },
       suggestions: [
         'Use AI to map integration dependencies',
@@ -439,10 +439,10 @@ const AIImpactScore: React.FC = () => {
     'Channel Partner Manager': {
       overallScore: 6.5,
       scores: {
-        'Task Automation': 7,
-        'Data Analysis': 7,
-        'Customer Interaction': 6,
-        'Strategic Planning': 6
+        'Automatización de Tareas': 7,
+        'Análisis de Datos': 7,
+        'Interacción con Clientes': 6,
+        'Planificación Estratégica': 6
       },
       suggestions: [
         'Use AI to analyze partner performance patterns',
@@ -525,8 +525,8 @@ const AIImpactScore: React.FC = () => {
 
   return (
     <Page
-      title="AI Impact Score"
-      subtitle="Evaluate and track AI readiness and impact across different roles"
+      title="Puntuación de Impacto de IA"
+      subtitle="Evalúa y rastrea la preparación e impacto de IA en diferentes roles"
     >
       <Layout>
         {/* Condensed Summary Section */}
@@ -534,12 +534,12 @@ const AIImpactScore: React.FC = () => {
           <Card>
             <div style={{ padding: '1rem', display: 'flex', alignItems: 'center', gap: '2rem' }}>
               <div>
-                <Text variant="headingMd" as="h2" tone="success">Current AI Readiness</Text>
+                <Text variant="headingMd" as="h2" tone="success">Preparación Actual de IA</Text>
                 <div style={{ display: 'flex', gap: '2rem', marginTop: '0.5rem' }}>
-                  <Text as="span">Roles Analyzed: <strong>{summaryStats.totalRoles}</strong></Text>
-                  <Text as="span">Avg Impact Score: <strong>{summaryStats.avgScore}/10</strong></Text>
-                  <Text as="span">Current AI Adoption: <strong>2/10</strong></Text>
-                  <Text as="span">Expected Productivity Gain: <strong>10-25%</strong></Text>
+                  <Text as="span">Roles Analizados: <strong>{summaryStats.totalRoles}</strong></Text>
+                  <Text as="span">Puntuación Promedio: <strong>{summaryStats.avgScore}/10</strong></Text>
+                  <Text as="span">Adopción Actual de IA: <strong>2/10</strong></Text>
+                  <Text as="span">Ganancia Esperada de Productividad: <strong>10-25%</strong></Text>
                 </div>
               </div>
             </div>
@@ -549,12 +549,12 @@ const AIImpactScore: React.FC = () => {
         <Layout.Section>
           <Card>
             <div style={{ padding: '1rem' }}>
-              <Text as="h2" variant="headingMd" tone="success">Shopify AI Context</Text>
+              <Text as="h2" variant="headingMd" tone="success">Contexto de IA de Shopify</Text>
               <List>
-                <List.Item>Employees have access to comprehensive AI tools</List.Item>
-                <List.Item>Current AI adoption is at 2/10 across the organization</List.Item>
-                <List.Item>Data integration with AI tools is still in progress</List.Item>
-                <List.Item>Expected productivity increase: 10-25% in next 12 months</List.Item>
+                <List.Item>Los empleados tienen acceso a herramientas completas de IA</List.Item>
+                <List.Item>La adopción actual de IA es de 2/10 en toda la organización</List.Item>
+                <List.Item>La integración de datos con herramientas de IA aún está en progreso</List.Item>
+                <List.Item>Aumento esperado de productividad: 10-25% en los próximos 12 meses</List.Item>
               </List>
             </div>
           </Card>
@@ -564,10 +564,10 @@ const AIImpactScore: React.FC = () => {
           <Card>
             <div style={{ padding: '1rem' }}>
               <TextField
-                label="Search Roles"
+                label="Buscar Roles"
                 value={searchQuery}
                 onChange={setSearchQuery}
-                placeholder="Search by job title..."
+                placeholder="Buscar por título de trabajo..."
                 autoComplete="off"
               />
             </div>
@@ -578,7 +578,7 @@ const AIImpactScore: React.FC = () => {
           <Card>
             <DataTable
               columnContentTypes={['text', 'text', 'text']}
-              headings={['Role', 'AI Impact Score', 'Top Suggestion']}
+              headings={['Rol', 'Puntuación de Impacto de IA', 'Sugerencia Principal']}
               rows={rows}
             />
           </Card>
@@ -598,7 +598,7 @@ const AIImpactScore: React.FC = () => {
                 </div>
 
                 <div style={{ marginTop: '1rem' }}>
-                  <Text as="h3" variant="headingSm">Scores</Text>
+                  <Text as="h3" variant="headingSm">Puntuaciones</Text>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '0.5rem' }}>
                     {Object.entries(roleDetails[selectedRole].scores).map(([category, score]) => (
                       <div key={category} style={{ 
@@ -617,7 +617,7 @@ const AIImpactScore: React.FC = () => {
                 </div>
 
                 <div style={{ marginTop: '1rem' }}>
-                  <Text as="h3" variant="headingSm">Suggestions for Improvement</Text>
+                  <Text as="h3" variant="headingSm">Sugerencias para Mejorar</Text>
                   <List>
                     {roleDetails[selectedRole].suggestions.map((suggestion, index) => (
                       <List.Item key={index}>{suggestion}</List.Item>
@@ -626,7 +626,7 @@ const AIImpactScore: React.FC = () => {
                 </div>
 
                 <div style={{ marginTop: '1rem' }}>
-                  <Text as="h3" variant="headingSm">Current State</Text>
+                  <Text as="h3" variant="headingSm">Estado Actual</Text>
                   <div style={{ 
                     padding: '1rem',
                     backgroundColor: '#f6f6f7',
@@ -634,16 +634,16 @@ const AIImpactScore: React.FC = () => {
                     marginTop: '0.5rem'
                   }}>
                     <Text as="p" variant="bodyMd">
-                      AI Adoption Level: {roleDetails[selectedRole].currentState.aiAdoption}/10
+                      Nivel de Adopción de IA: {roleDetails[selectedRole].currentState.aiAdoption}/10
                     </Text>
                     <Text as="p" variant="bodyMd">
-                      Expected Productivity Increase: {roleDetails[selectedRole].currentState.productivityIncrease}
+                      Aumento Esperado de Productividad: {roleDetails[selectedRole].currentState.productivityIncrease}
                     </Text>
                   </div>
                 </div>
 
                 <div style={{ marginTop: '1rem' }}>
-                  <Text as="h3" variant="headingSm">Key Opportunities</Text>
+                  <Text as="h3" variant="headingSm">Oportunidades Clave</Text>
                   <List>
                     {roleDetails[selectedRole].keyOpportunities.map((opportunity, index) => (
                       <List.Item key={index}>{opportunity}</List.Item>
@@ -652,7 +652,7 @@ const AIImpactScore: React.FC = () => {
                 </div>
 
                 <div style={{ marginTop: '1rem' }}>
-                  <Text as="h3" variant="headingSm">Readiness Requirements</Text>
+                  <Text as="h3" variant="headingSm">Requisitos de Preparación</Text>
                   <List>
                     {roleDetails[selectedRole].readinessRequirements.map((requirement, index) => (
                       <List.Item key={index}>{requirement}</List.Item>
