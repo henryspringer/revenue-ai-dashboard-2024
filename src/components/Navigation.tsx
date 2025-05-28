@@ -22,19 +22,19 @@ const Navigation: React.FC<NavigationProps> = ({ selected, onSelect }) => {
       <PolarisNavigation.Section
         items={[
           {
-            label: 'AI Impact Score',
+            label: 'Cage Acting Intensity Score',
             icon: HomeMinor,
             selected: location.pathname === '/',
             onClick: () => handleNavigation('/', 'home'),
           },
           {
-            label: 'AI Interview Assignments',
+            label: 'Method Acting Assignments',
             icon: ListMinor,
             selected: location.pathname === '/interview-assignments',
             onClick: () => handleNavigation('/interview-assignments', 'assignments'),
           },
           {
-            label: 'AI Interview Analysis',
+            label: 'Performance Analysis',
             icon: AnalyticsMinor,
             selected: location.pathname === '/interview-analysis',
             onClick: () => handleNavigation('/interview-analysis', 'analysis'),

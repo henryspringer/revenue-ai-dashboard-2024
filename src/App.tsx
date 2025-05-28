@@ -30,16 +30,16 @@ const PasswordPrompt: React.FC<{ onCorrectPassword: () => void }> = ({ onCorrect
   const [error, setError] = useState('');
 
   const handleSubmit = () => {
-    if (password === 'shopify') {
+    if (password === 'nationaltreasure') {
       // Store authentication with a timestamp
       const authData = {
         isAuthenticated: true,
         timestamp: Date.now()
       };
-      localStorage.setItem('shopifyAuth', JSON.stringify(authData));
+      localStorage.setItem('cageAuth', JSON.stringify(authData));
       onCorrectPassword();
     } else {
-      setError('Incorrect password');
+      setError('Incorrect password - The Declaration of Independence remains hidden');
     }
   };
 
@@ -49,11 +49,11 @@ const PasswordPrompt: React.FC<{ onCorrectPassword: () => void }> = ({ onCorrect
         <Card>
           <div style={{ padding: '1rem' }}>
             <Text as="h2" variant="headingLg" tone="success">
-              Shopify Revenue AI Analysis Dashboard
+              Nicolas Cage Movie Excellence Dashboard
             </Text>
             <div style={{ paddingTop: '1rem' }}>
               <Text as="p" variant="bodyMd">
-                Please enter the password to access this dashboard.
+                Enter the secret password to access the Cage-o-meter™ and discover which roles are worthy of the One True God.
               </Text>
             </div>
             <div style={{ paddingTop: '1rem' }}>
@@ -64,13 +64,13 @@ const PasswordPrompt: React.FC<{ onCorrectPassword: () => void }> = ({ onCorrect
                   onChange={setPassword}
                   error={error}
                   autoComplete="off"
-                  label="Password"
+                  label="Password (Hint: His greatest treasure hunt)"
                   onBlur={() => {}}
                   onFocus={() => {}}
                 />
                 <div style={{ marginTop: '1rem' }}>
                   <Button variant="primary" onClick={handleSubmit} tone="success">
-                    Access Dashboard
+                    Steal the Declaration
                   </Button>
                 </div>
               </FormLayout>
@@ -88,7 +88,7 @@ const AppContent: React.FC = () => {
   const [selected, setSelected] = React.useState('home');
 
   const handleLogout = () => {
-    localStorage.removeItem('shopifyAuth');
+    localStorage.removeItem('cageAuth');
     navigate('/');
     window.location.reload();
   };
@@ -109,14 +109,14 @@ const AppContent: React.FC = () => {
           display: 'flex', 
           justifyContent: 'space-between',
           alignItems: 'center',
-          borderBottom: '1px solid #49fb77ff',
-          backgroundColor: '#49fb77ff',
-          boxShadow: '0 2px 4px rgba(73, 251, 119, 0.2)'
+          borderBottom: '1px solid #d4af37',
+          backgroundColor: '#d4af37',
+          boxShadow: '0 2px 4px rgba(212, 175, 55, 0.3)'
         }}>
           <Text as="h1" variant="headingLg" fontWeight="bold" tone="base">
-            Revenue AI First Hiring
+            Nicolas Cage Acting Method Analysis System
           </Text>
-          <Button onClick={handleLogout} tone="success">Logout</Button>
+          <Button onClick={handleLogout} tone="success">Put the Bunny Back in the Box</Button>
         </div>
       }
     >
@@ -134,7 +134,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const checkAuth = () => {
-      const authData = localStorage.getItem('shopifyAuth');
+      const authData = localStorage.getItem('cageAuth');
       if (authData) {
         try {
           const { isAuthenticated, timestamp } = JSON.parse(authData);
@@ -142,10 +142,10 @@ const App: React.FC = () => {
           if (isAuthenticated && Date.now() - timestamp < 24 * 60 * 60 * 1000) {
             setIsAuthenticated(true);
           } else {
-            localStorage.removeItem('shopifyAuth');
+            localStorage.removeItem('cageAuth');
           }
         } catch (e) {
-          localStorage.removeItem('shopifyAuth');
+          localStorage.removeItem('cageAuth');
         }
       }
     };
